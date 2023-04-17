@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:frontend": "npm run dev --workspace=frontend"
+    "dev:frontend": "npm run dev --workspace=frontend",
+    ,
   },
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "packages/frontend"
+    "packages/frontend",
+    "packages/backend"
   ],
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
