@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Role {
+  id   Int    @id @default(autoincrement())
+  name String
+  User User[]
+
+  @@map("role")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  name         String
+  role         Role      @relation(fields: [roleId], references: [id])
+  roleId       Int       @map("role_id")
+  email        String
+  passwordHash String    @map("password_hash")
+  createAt     DateTime  @default(now()) @map("create_at")
+  deletedAt    DateTime? @map("delted_at")
+  Like         Like[]
+  Rateing      Rateing[]
+  Cart         Cart[]
+
+  @@index([roleId])
+  @@map("user")
+}
+
+model Item {
+  id                 Int        @id @default(autoincrement())
+  category           Category   @relation(fields: [categoryId], references: [id])
+  categoryId         Int        @map("category_id")
+  name               String
+  description        String
+  price              Float
+  inStock            Int        @default(0)
+  discountPercentage Int        @default(0)
+  Image              Image[]
+  Like               Like[]
+  Rateing            Rateing[]
+  CartItem           CartItem[]
+
+  @@index([categoryId])
+  @@map("item")
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String
+  Item Item[]
+
+  @@map("category")
+}
+
+model Image {
+  id     Int    @id @default(autoincrement())
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId Int    @map("item_id")
+  path   String
+
+  @@index([itemId])
+  @@map("image")
+}
+
+model Like {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @map("user_id")
+  item   Item @relation(fields: [itemId], references: [id])
+  itemId Int  @map("item_id")
+
+  @@index([userId])
+  @@index([itemId])
+  @@map("like")
+}
+
+model Rateing {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @map("user_id")
+  item   Item @relation(fields: [itemId], references: [id])
+  itemId Int  @map("item_id")
+
+  @@index([userId])
+  @@index([itemId])
+  @@map("rateing")
+}
+
+model Cart {
+  id       Int        @id @default(autoincrement())
+  user     User       @relation(fields: [userId], references: [id])
+  userId   Int        @map("user_id")
+  CartItem CartItem[]
+
+  @@index([userId])
+  @@map("cart")
+}
+
+model CartItem {
+  id     Int  @id @default(autoincrement())
+  cart   Cart @relation(fields: [cartId], references: [id])
+  cartId Int  @map("cart_id")
+  item   Item @relation(fields: [itemId], references: [id])
+  itemId Int  @map("item_id")
+
+  @@index([cartId])
+  @@index([itemId])
+  @@map("cart_item")
+}

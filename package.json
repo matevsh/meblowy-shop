@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:frontend": "npm run dev --workspace=frontend",
-    ,
+    "dev:frontend": "npm run dev --workspace=frontend"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +16,8 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
     "prettier": "2.8.7"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.13.0"
   }
 }
