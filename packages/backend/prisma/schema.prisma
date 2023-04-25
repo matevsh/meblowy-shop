@@ -11,19 +11,15 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Role {
-  id   Int    @id @default(autoincrement())
-  name String
-  User User[]
-
-  @@map("role")
+enum Role {
+    USER
+    ADMIN
 }
 
 model User {
   id           Int       @id @default(autoincrement())
   name         String
-  role         Role      @relation(fields: [roleId], references: [id])
-  roleId       Int       @map("role_id")
+  role         Role
   email        String
   passwordHash String    @map("password_hash")
   createAt     DateTime  @default(now()) @map("create_at")
@@ -32,7 +28,6 @@ model User {
   Rateing      Rateing[]
   Cart         Cart[]
 
-  @@index([roleId])
   @@map("user")
 }
 
