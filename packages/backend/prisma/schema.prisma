@@ -12,15 +12,15 @@ datasource db {
 }
 
 enum Role {
-    USER
-    ADMIN
+  USER
+  ADMIN
 }
 
 model User {
   id           Int       @id @default(autoincrement())
-  name         String
+  login        String    @unique
   role         Role
-  email        String
+  email        String    @unique
   passwordHash String    @map("password_hash")
   createAt     DateTime  @default(now()) @map("create_at")
   deletedAt    DateTime? @map("delted_at")
@@ -35,7 +35,7 @@ model Item {
   id                 Int        @id @default(autoincrement())
   category           Category   @relation(fields: [categoryId], references: [id])
   categoryId         Int        @map("category_id")
-  name               String
+  name               String     @unique
   description        String
   price              Float
   inStock            Int        @default(0)
