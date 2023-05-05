@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Session,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, Session } from '@nestjs/common';
 
 import { CreateUserDto } from './dtos/create-user.dto';
 import { AuthService } from './auth.service';
@@ -36,7 +29,6 @@ export class AuthController {
   @Auth('USER')
   @Get('/me')
   async getUser(@Session() session: AuthSession) {
-    if (!session?.user) throw new UnauthorizedException();
     return session.user;
   }
 }
