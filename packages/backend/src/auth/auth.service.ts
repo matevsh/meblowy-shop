@@ -11,22 +11,22 @@ export class AuthService {
   constructor(private prisma: PrismaService) {}
 
   async validateUser({ login, password }: LoginDto) {
-    const { passwordHash, ...user } = await this.prisma.user.findUnique({
+    const { password: _password, ...user } = await this.prisma.user.findUnique({
       where: { login },
     });
 
-    const compare = await this.comparePassword(password, passwordHash);
+    const compare = await this.comparePassword(password, _password);
 
     if (compare) return user;
     else throw new UnauthorizedException();
   }
 
   async createUser({ login, password, email }: CreateUserDto) {
-    const passwordHash = await this.hashPassword(password);
+    const _password = await this.hashPassword(password);
     const role = Role.USER;
 
     return this.prisma.user.create({
-      data: { role, login, passwordHash, email },
+      data: { role, login, password: _password, email, username: login },
     });
   }
 
