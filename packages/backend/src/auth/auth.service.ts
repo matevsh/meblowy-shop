@@ -1,4 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { hash, compare } from 'bcrypt';
 
@@ -11,9 +16,13 @@ export class AuthService {
   constructor(private prisma: PrismaService) {}
 
   async validateUser({ login, password }: LoginDto) {
-    const { password: _password, ...user } = await this.prisma.user.findUnique({
+    const dbResponse = await this.prisma.user.findUnique({
       where: { login },
     });
+
+    if (!dbResponse) throw new NotFoundException();
+
+    const { password: _password, ...user } = dbResponse;
 
     const compare = await this.comparePassword(password, _password);
 
