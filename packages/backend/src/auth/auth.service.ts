@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -8,7 +7,7 @@ import { Role } from '@prisma/client';
 import { hash, compare } from 'bcrypt';
 
 import { CreateUserDto } from './dtos/create-user.dto';
-import { PrismaService } from '../utils/prisma.service';
+import { PrismaService } from '../shared/prisma/prisma.service';
 import { LoginDto } from './dtos/login.dto';
 
 @Injectable()

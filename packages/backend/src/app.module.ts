@@ -4,9 +4,9 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { PrismaService } from './utils/prisma.service';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
+import { SharedModule } from './shared/shared.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -18,8 +18,9 @@ import configuration from './config/configuration';
       load: [configuration],
       isGlobal: true,
     }),
+    SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [AppService],
 })
 export class AppModule {}
