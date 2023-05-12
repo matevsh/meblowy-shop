@@ -1,10 +1,4 @@
-import {
-  Body,
-  ConsoleLogger,
-  Controller,
-  InternalServerErrorException,
-  Post,
-} from '@nestjs/common';
+import { Body, ConsoleLogger, Controller, Get, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
@@ -44,5 +38,10 @@ export class ProductController {
     return {
       success: true,
     };
+  }
+
+  @Get()
+  async getProducts() {
+    return await this.productService.getProducts();
   }
 }
