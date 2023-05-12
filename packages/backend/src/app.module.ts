@@ -8,6 +8,8 @@ import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import configuration from './config/configuration';
+import { APP_FILTER } from '@nestjs/core';
+import { GlobalAppFilter } from './shared/filters/global-app.filter';
 
 @Module({
   imports: [
@@ -21,6 +23,12 @@ import configuration from './config/configuration';
     SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: GlobalAppFilter,
+    },
+  ],
 })
 export class AppModule {}
