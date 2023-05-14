@@ -32,6 +32,13 @@ export class ProductService {
     return this.prisma.item.findMany({
       where: {
         categoryId
+      },
+      include: {
+        Image: {
+          select: {
+            path: true,
+          }
+        }
       }
     });
   }
