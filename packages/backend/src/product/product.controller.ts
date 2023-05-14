@@ -1,5 +1,4 @@
-import { Body, ConsoleLogger, Controller, Get, Post, Query } from "@nestjs/common";
-import { ConfigService } from '@nestjs/config';
+import { Body, Controller, Get, Post, Query } from "@nestjs/common";
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
@@ -11,8 +10,6 @@ import { CreateProductDto } from './dto/create-product.dto';
 export class ProductController {
   constructor(
     private productService: ProductService,
-    private config: ConfigService,
-    private logger: ConsoleLogger,
   ) {}
 
   @Files('file')
@@ -32,7 +29,10 @@ export class ProductController {
     });
     await Promise.all(fileSaving);
 
-    const fileNames = files.map((item) => item.filename);
+    const fileNames = files.map((item) =>
+      `${item.filename}${path.extname(item.originalname)}`
+    );
+
     await this.productService.createProduct(body, fileNames);
 
     return {
