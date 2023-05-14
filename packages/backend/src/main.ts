@@ -3,10 +3,17 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as session from 'express-session';
+import * as fs from 'node:fs/promises';
 import * as process from 'process';
+
+const REQUIRED_DIRS = ['upload', 'temp'];
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  REQUIRED_DIRS.forEach((dir) => {
+    fs.readdir(dir).catch(() => fs.mkdir(dir));
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Shop API swagger')
