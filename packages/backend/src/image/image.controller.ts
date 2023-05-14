@@ -13,7 +13,7 @@ export class ImageController {
 
     await readFile(path)
       .catch(() => {
-        imagePath = resolve('upload/default.png');
+        imagePath = resolve('assets/default.png');
       })
 
     res.sendFile(imagePath);
