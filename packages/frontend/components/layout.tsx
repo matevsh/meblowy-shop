@@ -1,7 +1,9 @@
+import { ReactNode } from "react"
+
 import { SiteHeader } from "@/components/site-header"
 
 interface LayoutProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function Layout({ children }: LayoutProps) {
