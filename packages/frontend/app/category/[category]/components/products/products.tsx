@@ -1,3 +1,5 @@
+import { ProductCard } from "@/app/category/[category]/components/products/product-card"
+import { API_URL } from "@/app/shared/constants"
 import { ProductsResponse } from "@/app/shared/schemas/products-response"
 
 type Props = {
@@ -6,10 +8,18 @@ type Props = {
 
 export function Products({ products }: Props) {
   return (
-    <section className="container flex flex-wrap">
-      {products.map((product) => (
-        <div className="aspect-square basis-1/3">{product.name}</div>
-      ))}
+    <section className="gap container flex flex-wrap">
+      {products.map(({ name, Image, price, id }) => {
+        return (
+          <ProductCard
+            id={id}
+            imgPath={Image?.[0].path}
+            name={name}
+            price={price}
+            key={id}
+          />
+        )
+      })}
     </section>
   )
 }

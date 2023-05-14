@@ -37,7 +37,7 @@ export default function IndexPage() {
       </div>
       <h1 className="text-3xl font-bold">Categories</h1>
       {/* @ts-expect-error Async Server Component */}
-      <Categories />
+      <Categories short />
     </section>
   )
 }

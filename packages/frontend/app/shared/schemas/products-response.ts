@@ -9,6 +9,11 @@ export const productsResponse = z.array(
     price: z.number(),
     inStock: z.number(),
     discountPercentage: z.number(),
+    Image: z.array(
+      z.object({
+        path: z.string(),
+      })
+    ),
   })
 )
 
