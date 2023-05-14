@@ -26,7 +26,13 @@ export class ProductService {
     });
   }
 
-  getProducts() {
-    return this.prisma.item.findMany();
+  getProducts(category: string | undefined) {
+    const categoryId = parseInt(category) || undefined;
+
+    return this.prisma.item.findMany({
+      where: {
+        categoryId
+      }
+    });
   }
 }
