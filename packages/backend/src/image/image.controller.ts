@@ -1,21 +1,15 @@
 import { Controller, Get, Param, Res } from "@nestjs/common";
 import { Response } from "express";
-import { resolve } from 'path';
-import { readFile } from 'node:fs/promises'
+import { FirebaseService } from "../shared/firebase/firebase.service";
 
 @Controller('image')
 export class ImageController {
 
+  constructor(private firebaseService: FirebaseService) {}
+
   @Get(":fileName")
   async getImage(@Res() res: Response, @Param('fileName') fileName: string ) {
-    const path = `upload/${fileName}`;
-    let imagePath = resolve(path);
-
-    await readFile(path)
-      .catch(() => {
-        imagePath = resolve('assets/default.png');
-      })
-
-    res.sendFile(imagePath);
+    const url = await this.firebaseService.getFile(fileName)
+    res.redirect(url)
   }
 }

@@ -1,4 +1,5 @@
 import { AppModule } from './app.module';
+import { initializeFirebase } from './firebase.config';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
@@ -7,6 +8,7 @@ import * as fs from 'node:fs/promises';
 import * as process from 'process';
 
 const REQUIRED_DIRS = ['upload', 'temp'];
+initializeFirebase();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -5,11 +5,13 @@ import * as path from 'node:path';
 import { ProductService } from './product.service';
 import { Files, ValidateFiles } from './product.decorator';
 import { CreateProductDto } from './dto/create-product.dto';
+import { FirebaseService } from "../shared/firebase/firebase.service";
 
 @Controller('product')
 export class ProductController {
   constructor(
     private productService: ProductService,
+    private firebaseService: FirebaseService,
   ) {}
 
   @Files('file')
@@ -18,20 +20,7 @@ export class ProductController {
     @ValidateFiles() files: Express.Multer.File[],
     @Body() body: CreateProductDto,
   ) {
-    const fileSaving = [];
-    files.forEach((item) => {
-      fileSaving.push(
-        fs.rename(
-          item.path,
-          `upload/${item.filename}${path.extname(item.originalname)}`,
-        ),
-      );
-    });
-    await Promise.all(fileSaving);
-
-    const fileNames = files.map((item) =>
-      `${item.filename}${path.extname(item.originalname)}`
-    );
+    const fileNames = await this.firebaseService.upload(files);
 
     await this.productService.createProduct(body, fileNames);
 
@@ -43,5 +32,15 @@ export class ProductController {
   @Get()
   async getProducts(@Query('category') category: string) {
     return await this.productService.getProducts(category);
+  }
+
+  @Files('file')
+  @Post('/upload')
+  async uploadFile(@ValidateFiles() files: Express.Multer.File[]){
+    await this.firebaseService.upload(files)
+
+    return {
+      success: true
+    }
   }
 }
