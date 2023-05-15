@@ -1,7 +1,6 @@
 import { Controller, Get, Param, Res } from "@nestjs/common";
 import { Response } from "express";
 import { FirebaseService } from "../shared/firebase/firebase.service";
-import {readFile} from 'node:fs/promises
 
 @Controller('image')
 export class ImageController {
