@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Res } from "@nestjs/common";
 import { Response } from "express";
 import { FirebaseService } from "../shared/firebase/firebase.service";
+import {readFile} from 'node:fs/promises
 
 @Controller('image')
 export class ImageController {
@@ -9,7 +10,11 @@ export class ImageController {
 
   @Get(":fileName")
   async getImage(@Res() res: Response, @Param('fileName') fileName: string ) {
-    const url = await this.firebaseService.getFile(fileName)
-    res.redirect(url)
+    try {
+      const url = await this.firebaseService.getFile(fileName)
+      res.redirect(url)
+    } catch {
+      res.sendFile('/assets/default.png')
+    }
   }
 }
