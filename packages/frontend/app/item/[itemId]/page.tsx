@@ -10,9 +10,9 @@ type Props = {
   params: Params
 }
 
-export default function ItemPage({ params }: Props) {
+export default async function ItemPage({ params }: Props) {
   const itemId = params.itemId
-  const data = getItem(itemId)
+  const data = await getItem(itemId)
 
   return (
     <div className="container">
