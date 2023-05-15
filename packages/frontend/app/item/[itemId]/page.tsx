@@ -1,7 +1,9 @@
 import Link from "next/link"
 
+import { getItem } from "@/app/item/[itemId]/get-item"
+
 type Params = {
-  item: string
+  itemId: string
 }
 
 type Props = {
@@ -9,11 +11,12 @@ type Props = {
 }
 
 export default function ItemPage({ params }: Props) {
-  const { item } = params
+  const itemId = params.itemId
+  const data = getItem(itemId)
 
   return (
     <div className="container">
-      <h1>{item}</h1>
+      <h1>{JSON.stringify(data)}</h1>
     </div>
   )
 }
