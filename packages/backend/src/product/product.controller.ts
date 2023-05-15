@@ -1,11 +1,10 @@
-import { Body, Controller, Get, Post, Query } from "@nestjs/common";
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
+import { Body, Controller, Get, Param, Post, Query } from "@nestjs/common";
 
 import { ProductService } from './product.service';
 import { Files, ValidateFiles } from './product.decorator';
 import { CreateProductDto } from './dto/create-product.dto';
 import { FirebaseService } from "../shared/firebase/firebase.service";
+import {GetProductDto} from "./dto/get-product.dto";
 
 @Controller('product')
 export class ProductController {
@@ -34,13 +33,8 @@ export class ProductController {
     return await this.productService.getProducts(category);
   }
 
-  @Files('file')
-  @Post('/upload')
-  async uploadFile(@ValidateFiles() files: Express.Multer.File[]){
-    await this.firebaseService.upload(files)
-
-    return {
-      success: true
-    }
+  @Get('/:itemId')
+  async getProduct(@Param() { itemId }: GetProductDto) {
+    return await this.productService.getProduct(+itemId);
   }
 }

@@ -42,4 +42,19 @@ export class ProductService {
       }
     });
   }
+
+  getProduct(productId: number) {
+    return this.prisma.item.findFirst({
+      where: {
+        id: productId
+      },
+      include: {
+        Image: {
+          select: {
+            path: true,
+          }
+        }
+      }
+    })
+  }
 }
