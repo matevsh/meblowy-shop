@@ -12,7 +12,7 @@ const nextConfig = {
       {
         protocol: isDev ? 'http' : 'https',
         hostname: isDev ? 'localhost' : 'nextjs-nestjs-shop-production.up.railway.app',
-        port: isDev ? 3000 : "",
+        port: isDev ? "3000" : "",
         pathname: '/image/*',
       },
     ]
