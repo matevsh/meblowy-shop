@@ -57,6 +57,12 @@ export class ProductService {
         category: {
           select: {
             name: true,
+            id: true
+          }
+        },
+        Rateing: {
+          select: {
+            rate: true,
           }
         }
       }

@@ -82,6 +82,7 @@ model Like {
 
 model Rateing {
   id     Int  @id @default(autoincrement())
+  rate   Int
   user   User @relation(fields: [userId], references: [id])
   userId Int  @map("user_id")
   item   Item @relation(fields: [itemId], references: [id])
