@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const ENV = process.env.ENV || "development"
+const isDev = ENV === "development";
+
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
@@ -7,9 +10,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'nextjs-nestjs-shop-production.up.railway.app',
-        port: '',
+        protocol: isDev ? 'http' : 'https',
+        hostname: isDev ? 'localhost' : 'nextjs-nestjs-shop-production.up.railway.app',
+        port: isDev ? "3000" : "",
         pathname: '/image/*',
       },
     ]
