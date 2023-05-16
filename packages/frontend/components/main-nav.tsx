@@ -99,7 +99,7 @@ export function MainNav() {
     <NavigationMenu>
       <Link href="/" className="hidden space-x-2 md:flex">
         <div className="mr-4 hidden break-keep font-bold sm:inline-block">
-          🪑 Furniture Shop
+          🪑 Meblowy Shop
         </div>
       </Link>
       <NavigationMenuList>
