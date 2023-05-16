@@ -53,6 +53,11 @@ export class ProductService {
           select: {
             path: true,
           }
+        },
+        category: {
+          select: {
+            name: true,
+          }
         }
       }
     })
