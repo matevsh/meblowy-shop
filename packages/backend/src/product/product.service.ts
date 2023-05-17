@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException, Logger } from "@nestjs/common";
 import { CreateProductDto } from './dto/create-product.dto';
 import { PrismaService } from '../shared/prisma/prisma.service';
 
@@ -6,6 +6,13 @@ import { PrismaService } from '../shared/prisma/prisma.service';
 @Injectable()
 export class ProductService {
   constructor(private prisma: PrismaService) {}
+
+  private addView(productId: number) {
+    return this.prisma.item.update({
+      where: { id: productId },
+      data: { views: {  increment: 1 } }
+    }).catch((err) => Logger.error(err));
+  }
 
   createProduct(product: CreateProductDto, images: string[]) {
     const imagesData = images.map((item) => ({ path: item }));
@@ -59,7 +66,10 @@ export class ProductService {
         Rating: true
       }
     })
+
     if (!product) throw new NotFoundException('Product not found');
+    else this.addView(productId);
+
     return product;
   }
 }
