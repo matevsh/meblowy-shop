@@ -72,4 +72,13 @@ export class ProductService {
 
     return product;
   }
+
+  async getPopularProducts() {
+    return this.prisma.item.findMany({
+      orderBy: {
+        views: 'desc'
+      },
+      take: 20
+    })
+  }
 }

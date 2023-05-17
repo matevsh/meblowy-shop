@@ -33,6 +33,11 @@ export class ProductController {
     return await this.productService.getProducts(category);
   }
 
+  @Get('/popular')
+  async getPopularProducts() {
+    return await this.productService.getPopularProducts();
+  }
+
   @Get('/:itemId')
   async getProduct(@Param() { itemId }: GetProductDto) {
     return await this.productService.getProduct(+itemId);
