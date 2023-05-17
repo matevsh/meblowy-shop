@@ -55,7 +55,7 @@ export class ProductService {
           }
         },
         category: true,
-        Rateing: true
+        Rating: true
       }
     })
   }
