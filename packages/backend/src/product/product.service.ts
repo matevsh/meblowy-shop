@@ -54,17 +54,8 @@ export class ProductService {
             path: true,
           }
         },
-        category: {
-          select: {
-            name: true,
-            id: true
-          }
-        },
-        Rateing: {
-          select: {
-            rate: true,
-          }
-        }
+        category: true,
+        Rateing: true
       }
     })
   }
