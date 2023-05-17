@@ -90,7 +90,7 @@ model Rating {
 
   @@index([userId])
   @@index([itemId])
-  @@map("rateing")
+  @@map("rating")
 }
 
 model Cart {
