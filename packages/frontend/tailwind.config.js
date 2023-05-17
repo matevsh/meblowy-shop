@@ -71,6 +71,10 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    aspectRatio: {
+      square: "1",
+      "7/8": "7 / 8",
+    },
   },
   plugins: [require("tailwindcss-animate")],
 }

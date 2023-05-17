@@ -1,0 +1,7 @@
+.hideScrollBar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.hideScrollBar::-webkit-scrollbar-thumb {
+  background: #a1a1a1;
+}

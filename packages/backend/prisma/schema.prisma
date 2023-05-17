@@ -26,7 +26,7 @@ model User {
   createAt  DateTime  @default(now()) @map("create_at")
   deletedAt DateTime? @map("delted_at")
   Like      Like[]
-  Rateing   Rateing[]
+  Rating   Rating[]
   Cart      Cart[]
 
   @@map("user")
@@ -43,7 +43,7 @@ model Item {
   discountPercentage Int        @default(0)
   Image              Image[]
   Like               Like[]
-  Rateing            Rateing[]
+  Rating            Rating[]
   CartItem           CartItem[]
 
   @@index([categoryId])
@@ -80,8 +80,9 @@ model Like {
   @@map("like")
 }
 
-model Rateing {
+model Rating {
   id     Int  @id @default(autoincrement())
+  rate   Int
   user   User @relation(fields: [userId], references: [id])
   userId Int  @map("user_id")
   item   Item @relation(fields: [itemId], references: [id])

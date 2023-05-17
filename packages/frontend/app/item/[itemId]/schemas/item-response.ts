@@ -8,6 +8,9 @@ export const itemResponse = z.object({
   price: z.number(),
   inStock: z.number(),
   discountPercentage: z.number(),
+  category: z.object({
+    name: z.string(),
+  }),
   Image: z.array(
     z.object({
       path: z.string(),
