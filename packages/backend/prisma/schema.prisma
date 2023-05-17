@@ -26,7 +26,7 @@ model User {
   createAt  DateTime  @default(now()) @map("create_at")
   deletedAt DateTime? @map("delted_at")
   Like      Like[]
-  Rating   Rating[]
+  Rating    Rating[]
   Cart      Cart[]
 
   @@map("user")
@@ -37,13 +37,14 @@ model Item {
   category           Category   @relation(fields: [categoryId], references: [id])
   categoryId         Int        @map("category_id")
   name               String     @unique
+  views              Int        @default(0)
   description        String
   price              Float
   inStock            Int        @default(0)
   discountPercentage Int        @default(0)
   Image              Image[]
   Like               Like[]
-  Rating            Rating[]
+  Rating             Rating[]
   CartItem           CartItem[]
 
   @@index([categoryId])
