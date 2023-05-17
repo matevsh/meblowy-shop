@@ -43,10 +43,13 @@ export class ProductService {
       },
       include: {
         Image: {
+          take: 1,
           select: {
             path: true,
           }
-        }
+        },
+        category: true,
+        Rating: true
       }
     });
   }
@@ -78,7 +81,17 @@ export class ProductService {
       orderBy: {
         views: 'desc'
       },
-      take: 20
+      take: 20,
+      include: {
+        Image: {
+          take: 1,
+          select: {
+            path: true,
+          }
+        },
+        category: true,
+        Rating: true,
+      }
     })
   }
 }
