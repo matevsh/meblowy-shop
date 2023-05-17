@@ -1,5 +1,21 @@
-# NextJS NestJS Shop
+# 🪑 [Furniture Shop](https://www.meblowy.shop/)
 
-🛍️ Projekt to sklep internetowy napisany w technologiach Next.js i Nest.js z użyciem TypeScript. 🚀 Celem projektu jest zaprojektowanie i implementacja aplikacji e-commerce z wykorzystaniem nowoczesnych narzędzi i technologii. Aplikacja będzie posiadać funkcjonalności takie jak przeglądanie produktów, dodawanie ich do koszyka, składanie zamówień oraz zarządzanie kontem użytkownika.
+## 📋Description
+The project is an e-commerce platform built with Next.js and Nest.js, leveraging the power of TypeScript. It encompasses a range of features, starting from essential online shopping functionalities and culminating in a robust and fully operational sales platform.
 
-🛍️ The project is an online store written in Next.js and Nest.js technologies using TypeScript. 🚀 The goal of the project is to design and implement an e-commerce application using modern tools and technologies. The application will have functionalities such as browsing products, adding them to a shopping cart, placing orders and managing a user account.
+## 📈Motivation
+My main objective in building this platform was to test my skills with Next.js and Nest.js, while also gaining familiarity with new technologies that I had not previously worked with.
+
+## 🔗Live Preview
+**[Live page preview - meblowy.shop](https://www.meblowy.shop/)**
+
+**[Live API preview - api.meblowy.shop](https://api.meblowy.shop/)**
+
+[Live page develop - dev.meblowy.shop](https://dev.meblowy.shop/)
+
+# Todo
+- [ ] Frontend authentication handling
+- [ ] Server side user cart
+- [ ] Administration page view
+- [ ] RWD
+- [ ] ...
