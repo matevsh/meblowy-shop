@@ -15,6 +15,8 @@ export class GlobalAppFilter
 {
   catch(exception: unknown, host: ArgumentsHost) {
     if (exception instanceof Prisma.PrismaClientKnownRequestError) {
+      console.log(exception)
+
       exception.code === 'P2002'
         ? (exception = new ConflictException(
             `Przedmiot o takiej nazwie już istnieje ${JSON.stringify(
