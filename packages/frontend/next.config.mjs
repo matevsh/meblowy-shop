@@ -15,7 +15,7 @@ const nextConfig = {
       {
         protocol: isDev ? 'http' : 'https',
         hostname: isDev ? 'localhost' : API_URL,
-        port: isDev ? "3000" : "",
+        port: isDev ? "3005" : "",
         pathname: '/image/*',
       },
     ]
