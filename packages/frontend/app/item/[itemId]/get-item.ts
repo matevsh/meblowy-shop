@@ -1,10 +1,10 @@
-import axios from "axios"
+import { fetcher } from "@shared/utils/fetcher"
 
 import { API_URL } from "@/app/shared/constants"
 import { productSchema } from "@/app/shared/schemas/product-schema"
 
 export const getItem = async (itemId: number | string) => {
-  const { data } = await axios.get(`${API_URL}/product/${itemId}`)
+  const url = `${API_URL}/product/${itemId}`
 
-  return productSchema.parse(data)
+  return fetcher(url, productSchema)
 }

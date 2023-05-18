@@ -1,12 +1,10 @@
-import axios from "axios"
+import { fetcher } from "@shared/utils/fetcher"
 
 import { API_URL } from "@/app/shared/constants"
 import { productsArraySchema } from "@/app/shared/schemas/products-array-schema"
 
 export async function getCategory(category: string) {
-  const response = await axios.get(`${API_URL}/product`, {
-    params: { category },
-  })
+  const url = `${API_URL}/product?category=${category}`
 
-  return productsArraySchema.parse(response.data)
+  return fetcher(url, productsArraySchema)
 }
