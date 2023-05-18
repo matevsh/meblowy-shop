@@ -10,13 +10,12 @@ export async function PopularProducts() {
 
   return (
     <div>
-      {JSON.stringify(data[0])}
       <h1 className="mt-8 text-3xl font-bold">Popularne produkty</h1>
       <div className="flex flex-wrap">
         {data.map(({ name, Image: img, price, id }) => (
           <div key={name} className="aspect-[3/4] basis-1/4 p-2">
             <Link
-              className="flex h-full flex-col overflow-hidden rounded-md border-2"
+              className="flex h-full flex-col overflow-hidden rounded-md border-2 shadow-lg"
               href={`/item/${id}`}
             >
               <div className="relative aspect-square">
