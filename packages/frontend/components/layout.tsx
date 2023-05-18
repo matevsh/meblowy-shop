@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-import { SiteHeader } from "@/components/site-header"
+import { MainHeader } from "@/app/components/main-header/main-header"
 
 interface LayoutProps {
   children: ReactNode
@@ -9,7 +9,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <>
-      <SiteHeader />
+      <MainHeader />
       <main>{children}</main>
     </>
   )
