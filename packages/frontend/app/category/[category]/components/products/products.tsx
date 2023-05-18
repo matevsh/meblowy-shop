@@ -1,9 +1,9 @@
 import { ProductCard } from "@/app/category/[category]/components/products/product-card"
 import { API_URL } from "@/app/shared/constants"
-import { ProductsResponse } from "@/app/shared/schemas/products-response"
+import { ProductsArrayResponse } from "@/app/shared/schemas/products-array-schema"
 
 type Props = {
-  products: ProductsResponse
+  products: ProductsArrayResponse
 }
 
 export function Products({ products }: Props) {

@@ -21,6 +21,8 @@ export default async function ItemPage({ params }: Props) {
 
   const imagesData = data.Image.map((image) => `${API_URL}/image/${image.path}`)
 
+  const isAvailable = data.inStock > 0
+
   return (
     <div className="container flex max-w-screen-xl px-16">
       <div className="sticky basis-3/5">
@@ -38,7 +40,9 @@ export default async function ItemPage({ params }: Props) {
         </div>
 
         <p className="text-3xl font-black">{data.price}zł</p>
-        <Button className="mt-8">Dodaj do koszyka</Button>
+        <Button className="mt-8" disabled={!isAvailable}>
+          {isAvailable ? "Dodaj do koszyka" : "Produkt niedostępny"}
+        </Button>
       </div>
     </div>
   )

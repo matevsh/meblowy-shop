@@ -76,7 +76,7 @@ export class ProductService {
     return product;
   }
 
-  async getPopularProducts() {
+  getPopularProducts() {
     return this.prisma.item.findMany({
       orderBy: {
         views: 'desc'
