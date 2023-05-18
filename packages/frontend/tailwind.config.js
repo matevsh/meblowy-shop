@@ -74,6 +74,7 @@ module.exports = {
     aspectRatio: {
       square: "1",
       "7/8": "7 / 8",
+      "3/4": "3 / 4",
     },
   },
   plugins: [require("tailwindcss-animate")],
