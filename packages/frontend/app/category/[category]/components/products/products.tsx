@@ -8,7 +8,7 @@ type Props = {
 
 export function Products({ products }: Props) {
   return (
-    <section className="gap container flex flex-wrap">
+    <section className="flex flex-wrap">
       {products.map(({ name, Image, price, id }) => {
         return (
           <ProductCard

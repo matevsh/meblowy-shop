@@ -49,7 +49,7 @@ export class ProductService {
           }
         },
         category: true,
-        Rating: true
+        Rating: true,
       }
     });
   }
