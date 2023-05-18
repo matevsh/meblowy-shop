@@ -81,7 +81,7 @@ export class ProductService {
       orderBy: {
         views: 'desc'
       },
-      take: 20,
+      take: 12,
       include: {
         Image: {
           take: 1,
