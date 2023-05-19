@@ -4,7 +4,7 @@ import { CategoryService } from './category.service';
 import { FirebaseService } from "../shared/firebase/firebase.service";
 
 @Module({
-  controllers: [CategoryController, FirebaseService],
-  providers: [CategoryService],
+  controllers: [CategoryController],
+  providers: [CategoryService, FirebaseService],
 })
 export class CategoryModule {}
