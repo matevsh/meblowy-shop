@@ -23,7 +23,7 @@ export function Rating({ rating: initial }: Props) {
     return range(0, 5).map((_, i) => {
       let icon
 
-      if (i < rating) {
+      if (i < Math.floor(rating)) {
         icon = <StarIconFilled />
       } else if (i > Math.floor(rating)) {
         icon = <StarIcon />
