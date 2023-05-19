@@ -4,10 +4,10 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 export const File = (fieldName: string) =>
-  UseInterceptors(FilesInterceptor(fieldName));
+  UseInterceptors(FileInterceptor(fieldName));
 
 export const ValidateFile = () =>
   UploadedFile(

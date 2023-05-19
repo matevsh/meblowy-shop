@@ -5,6 +5,7 @@ import { getCategories } from "./get-categories"
 const allCategories = {
   id: "",
   name: "Wszystkie Kategorie",
+  image: "",
 }
 
 type Props = {
@@ -21,13 +22,16 @@ export async function Categories({ short = false }: Props) {
     <div>
       <h1 className="mt-8 text-3xl font-bold">Kategorie</h1>
       <div className="flex flex-wrap">
-        {renderData.map(({ name, id }) => (
+        {renderData.map(({ name, id, image }) => (
           <div key={name} className="flex aspect-square basis-1/5 p-2">
             <Link
               href={`/category/${id}`}
               className="w-full border-2 border-blue-300 p-2"
             >
-              <span className="text-xl font-bold ">{name}</span>
+              <span className="text-xl font-bold ">
+                {name}
+                {image}
+              </span>
             </Link>
           </div>
         ))}

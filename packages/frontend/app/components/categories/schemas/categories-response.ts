@@ -4,6 +4,7 @@ export const categoriesResponse = z.array(
   z.object({
     id: z.number(),
     name: z.string(),
+    image: z.string(),
   })
 )
 
