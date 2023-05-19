@@ -76,6 +76,9 @@ module.exports = {
       "7/8": "7 / 8",
       "3/4": "3 / 4",
     },
+    lineHeight: {
+      full: "100%",
+    },
   },
   plugins: [require("tailwindcss-animate")],
 }

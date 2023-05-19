@@ -4,7 +4,7 @@ import { ShoppingCart } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { MainNav } from "@/app/components/main-header/main-nav/main-nav"
+import { MainNav } from "@/app/components/main-header/components/main-nav/main-nav"
 
 export function MainHeader() {
   return (
