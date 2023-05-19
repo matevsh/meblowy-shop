@@ -5,9 +5,9 @@ import { PrismaService } from '../shared/prisma/prisma.service';
 export class CategoryService {
   constructor(private prisma: PrismaService) {}
 
-  createCategory(name: string) {
+  createCategory(name: string, imageName: string) {
     return this.prisma.category.create({
-      data: { name },
+      data: { name, image: imageName },
     });
   }
 
