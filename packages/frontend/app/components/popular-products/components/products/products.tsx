@@ -15,7 +15,7 @@ export function Products({ data }: Props) {
   return (
     <HorizontalScroll>
       {data.map((product) => (
-        <Card itemId={product.id} {...product} />
+        <Card itemId={product.id} {...product} key={product.id} />
       ))}
     </HorizontalScroll>
   )
