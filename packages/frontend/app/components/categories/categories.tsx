@@ -27,22 +27,17 @@ export async function Categories({ short = false }: Props) {
       <h1 className="mt-8 text-3xl font-bold">Kategorie</h1>
       <div className="flex flex-wrap">
         {renderData.map(({ name, id, image }) => {
-          const imageUrl = `${API_URL}/image/${image}`
+          const imageUrl = `${API_URL}/image/${image || "default"}`
 
           return (
-            <div
-              key={name}
-              className="relative flex aspect-square basis-1/5 p-2"
-            >
+            <div key={name} className="flex aspect-square basis-1/5 p-2">
               <Link
                 href={`/category/${id}`}
-                className="w-full border-2 border-blue-300 p-2"
+                className="relative w-full overflow-hidden rounded-md border-blue-300 p-2"
               >
                 <Image src={imageUrl} alt={""} fill />
-                <span className="text-xl font-bold">
-                  {API_URL}
-                  {name}
-                  {image}
+                <span className="absolute bottom-0 left-0 p-2 text-xl font-bold">
+                  <div className="rounded-md bg-white px-2">{name}</div>
                 </span>
               </Link>
             </div>
