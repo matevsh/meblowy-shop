@@ -1,5 +1,7 @@
 # 🪑 [Furniture Shop](https://www.meblowy.shop/)
 
+## 🚧The project is in production, so some functionality may not work🏭
+
 ## 📋Description
 The project is an e-commerce platform built with Next.js and Nest.js, leveraging the power of TypeScript. It encompasses a range of features, starting from essential online shopping functionalities and culminating in a robust and fully operational sales platform.
 
