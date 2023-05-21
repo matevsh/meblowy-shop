@@ -3,7 +3,6 @@ import { ShoppingCart } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { MainNav } from "@/app/components/main-header/components/main-nav/main-nav"
 
 export function MainHeader() {
@@ -28,7 +27,6 @@ export function MainHeader() {
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
-            <ThemeToggle />
             <Link href={"/cart"}>
               <div
                 className={buttonVariants({

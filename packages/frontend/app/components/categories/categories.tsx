@@ -9,7 +9,7 @@ import { getCategories } from "./get-categories"
 const allCategories = {
   id: "",
   name: "Wszystkie Kategorie",
-  image: "",
+  image: "allcategories.png",
 }
 
 type Props = {
